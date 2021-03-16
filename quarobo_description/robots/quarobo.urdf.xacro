@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<robot name="quarobo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find quarobo_description)/urdf/leg/leg.urdf.xacro"/>
+
+    <link name="base_link"/>
+
+        <!-- === body === -->
+    <joint name="body_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="body_link"/>
+    </joint>
+
+    <link name="body_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://quarobo_description/meshes/origin_ros_quarobo_stlFiles/body.stl"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="pink"/>
+        </visual>
+    </link>
+
+    <!-- === Front right === -->
+    <xacro:leg_macro prefix="FRS" parent="body_link" type="revolute" mesh="front_Shoulder_R.stl" color="green">
+        <axis xyz="0 1 0"/>
+        <origin xyz="-0.027 -0.04905 -0.00075" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="FRL" parent="FRS_link" type="revolute" mesh="front_Leg_R.stl" color="blue">
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 -0.022304 -0.01230" rpy="1.57 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="FRF" parent="FRL_link" type="revolute" mesh="front_Foot_R.stl" color="purple">
+        <axis xyz="1 0 0"/>
+        <origin xyz="-0.015546 -0.054 0" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="FRT" parent="FRF_link" type="fixed" mesh="front_Toes_R.stl" color="orange">
+        <axis xyz="1 0 0"/>
+        <origin xyz="-0.003 -0.088 0" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+
+    <!-- === Front left === -->
+    <xacro:leg_macro prefix="FLS" parent="body_link" type="revolute" mesh="front_Shoulder_L.stl" color="green">
+        <axis xyz="0 1 0"/>
+        <origin xyz="0.027 -0.04905 -0.00075" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="FLL" parent="FLS_link" type="revolute" mesh="front_Leg_L.stl" color="blue">
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 -0.022304 -0.01230" rpy="1.57 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="FLF" parent="FLL_link" type="revolute" mesh="front_Foot_L.stl" color="purple">
+        <axis xyz="1 0 0"/>
+        <origin xyz="0.015546 -0.054 0" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="FLT" parent="FLF_link" type="fixed" mesh="front_Toes_L.stl" color="orange">
+        <axis xyz="1 0 0"/>
+        <origin xyz="0.003 -0.088 0" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+
+    <!-- === Rear right === -->
+    <xacro:leg_macro prefix="RRS" parent="body_link" type="revolute" mesh="rear_Shoulder_R.stl" color="green">
+        <axis xyz="0 1 0"/>
+        <origin xyz="-0.027 0.04905 -0.00075" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="RRL" parent="RRS_link" type="revolute" mesh="rear_Leg_R.stl" color="blue">
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 0.022304 -0.01230" rpy="-1.57 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="RRF" parent="RRL_link" type="revolute" mesh="rear_Foot_R.stl" color="purple">
+        <axis xyz="1 0 0"/>
+        <origin xyz="-0.015546 0.054 0" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="RRT" parent="RRF_link" type="fixed" mesh="rear_Toes_R.stl" color="orange">
+        <axis xyz="1 0 0"/>
+        <origin xyz="-0.003 0.088 0" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+
+    <!-- === Rear left === -->
+    <xacro:leg_macro prefix="RLS" parent="body_link" type="revolute" mesh="rear_Shoulder_L.stl" color="green">
+        <axis xyz="0 1 0"/>
+        <origin xyz="0.027 0.04905 -0.00075" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="RLL" parent="RLS_link" type="revolute" mesh="rear_Leg_L.stl" color="blue">
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 0.022304 -0.01230" rpy="-1.57 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="RLF" parent="RLL_link" type="revolute" mesh="rear_Foot_L.stl" color="purple">
+        <axis xyz="1 0 0"/>
+        <origin xyz="0.015546 0.054 0" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+    <xacro:leg_macro prefix="RLT" parent="RLF_link" type="fixed" mesh="rear_Toes_L.stl" color="orange">
+        <axis xyz="1 0 0"/>
+        <origin xyz="0.003 0.088 0" rpy="0 0 0"/>
+    </xacro:leg_macro>
+
+</robot>

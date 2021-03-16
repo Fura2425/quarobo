@@ -1,0 +1,30 @@
+controller_list:
+  - name: fake_FR_leg_controller
+    joints:
+      - FRS_joint
+      - FRL_joint
+      - FRF_joint
+  - name: fake_FL_leg_controller
+    joints:
+      - FLS_joint
+      - FLL_joint
+      - FLF_joint
+  - name: fake_RR_leg_controller
+    joints:
+      - RRS_joint
+      - RRL_joint
+      - RRF_joint
+  - name: fake_RL_leg_controller
+    joints:
+      - RLS_joint
+      - RLL_joint
+      - RLF_joint
+initial:  # Define initial robot poses.
+  - group: FR_leg
+    pose: home_position
+  - group: FL_leg
+    pose: home_position
+  - group: RR_leg
+    pose: home_position
+  - group: RL_leg
+    pose: home_position

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find quarobo_description)/urdf/material/material.urdf.xacro"/>
+
+
+    <xacro:macro name="leg_macro" params="prefix parent type mesh color *joint_axis *joint_origin">
+
+        <joint name="${prefix}_joint" type="${type}">
+            <parent link="${parent}"/>
+            <child link="${prefix}_link"/>
+            <xacro:insert_block name="joint_axis"/>
+            <xacro:insert_block name="joint_origin"/>
+            <limit lower="-2.61" upper="2.61" effort="1000" velocity="0.5"/>
+        </joint>
+
+        <link name="${prefix}_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://quarobo_description/meshes/origin_ros_quarobo_stlFiles/${mesh}"/>
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <material name="${color}"/>
+            </visual>
+        </link>
+
+    </xacro:macro>
+
+</robot>

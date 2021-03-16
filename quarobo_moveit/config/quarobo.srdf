@@ -1,0 +1,124 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="quarobo">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="FR_leg">
+        <joint name="body_joint" />
+        <joint name="FRS_joint" />
+        <joint name="FRL_joint" />
+        <joint name="FRF_joint" />
+        <joint name="FRT_joint" />
+    </group>
+    <group name="FL_leg">
+        <joint name="body_joint" />
+        <joint name="FLS_joint" />
+        <joint name="FLL_joint" />
+        <joint name="FLF_joint" />
+        <joint name="FLT_joint" />
+    </group>
+    <group name="RR_leg">
+        <joint name="body_joint" />
+        <joint name="RRS_joint" />
+        <joint name="RRL_joint" />
+        <joint name="RRF_joint" />
+        <joint name="RRT_joint" />
+    </group>
+    <group name="RL_leg">
+        <joint name="body_joint" />
+        <joint name="RLS_joint" />
+        <joint name="RLL_joint" />
+        <joint name="RLF_joint" />
+        <joint name="RLT_joint" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="home_position" group="FR_leg">
+        <joint name="FRF_joint" value="-0.8" />
+        <joint name="FRL_joint" value="0.5" />
+        <joint name="FRS_joint" value="0.15" />
+    </group_state>
+    <group_state name="home_position" group="FL_leg">
+        <joint name="FLF_joint" value="-0.8" />
+        <joint name="FLL_joint" value="0.5" />
+        <joint name="FLS_joint" value="-0.15" />
+    </group_state>
+    <group_state name="home_position" group="RR_leg">
+        <joint name="RRF_joint" value="-0.8" />
+        <joint name="RRL_joint" value="0.5" />
+        <joint name="RRS_joint" value="0.15" />
+    </group_state>
+    <group_state name="home_position" group="RL_leg">
+        <joint name="RLF_joint" value="-0.8" />
+        <joint name="RLL_joint" value="0.5" />
+        <joint name="RLS_joint" value="-0.15" />
+    </group_state>
+    <group_state name="waiting_position" group="FR_leg">
+        <joint name="FRF_joint" value="-2.5" />
+        <joint name="FRL_joint" value="1" />
+        <joint name="FRS_joint" value="0" />
+    </group_state>
+    <group_state name="waiting_position" group="FL_leg">
+        <joint name="FLF_joint" value="-2.5" />
+        <joint name="FLL_joint" value="1" />
+        <joint name="FLS_joint" value="-0" />
+    </group_state>
+    <group_state name="waiting_position" group="RR_leg">
+        <joint name="RRF_joint" value="-2.5" />
+        <joint name="RRL_joint" value="1" />
+        <joint name="RRS_joint" value="0" />
+    </group_state>
+    <group_state name="waiting_position" group="RL_leg">
+        <joint name="RLF_joint" value="-2.5" />
+        <joint name="RLL_joint" value="1" />
+        <joint name="RLS_joint" value="0" />
+    </group_state>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="FLF_link" link2="FLL_link" reason="Adjacent" />
+    <disable_collisions link1="FLF_link" link2="FLT_link" reason="Adjacent" />
+    <disable_collisions link1="FLL_link" link2="FLS_link" reason="Adjacent" />
+    <disable_collisions link1="FLL_link" link2="FLT_link" reason="Never" />
+    <disable_collisions link1="FLL_link" link2="RLL_link" reason="Never" />
+    <disable_collisions link1="FLL_link" link2="RLS_link" reason="Never" />
+    <disable_collisions link1="FLL_link" link2="RRL_link" reason="Never" />
+    <disable_collisions link1="FLL_link" link2="RRS_link" reason="Never" />
+    <disable_collisions link1="FLS_link" link2="FLT_link" reason="Never" />
+    <disable_collisions link1="FLS_link" link2="FRS_link" reason="Never" />
+    <disable_collisions link1="FLS_link" link2="RLL_link" reason="Never" />
+    <disable_collisions link1="FLS_link" link2="RLS_link" reason="Never" />
+    <disable_collisions link1="FLS_link" link2="RRL_link" reason="Never" />
+    <disable_collisions link1="FLS_link" link2="RRS_link" reason="Never" />
+    <disable_collisions link1="FLS_link" link2="body_link" reason="Adjacent" />
+    <disable_collisions link1="FRF_link" link2="FRL_link" reason="Adjacent" />
+    <disable_collisions link1="FRF_link" link2="FRT_link" reason="Adjacent" />
+    <disable_collisions link1="FRL_link" link2="FRS_link" reason="Adjacent" />
+    <disable_collisions link1="FRL_link" link2="FRT_link" reason="Never" />
+    <disable_collisions link1="FRL_link" link2="RLL_link" reason="Never" />
+    <disable_collisions link1="FRL_link" link2="RLS_link" reason="Never" />
+    <disable_collisions link1="FRL_link" link2="RRL_link" reason="Never" />
+    <disable_collisions link1="FRL_link" link2="RRS_link" reason="Never" />
+    <disable_collisions link1="FRS_link" link2="FRT_link" reason="Never" />
+    <disable_collisions link1="FRS_link" link2="RLL_link" reason="Never" />
+    <disable_collisions link1="FRS_link" link2="RLS_link" reason="Never" />
+    <disable_collisions link1="FRS_link" link2="RRL_link" reason="Never" />
+    <disable_collisions link1="FRS_link" link2="RRS_link" reason="Never" />
+    <disable_collisions link1="FRS_link" link2="body_link" reason="Adjacent" />
+    <disable_collisions link1="RLF_link" link2="RLL_link" reason="Adjacent" />
+    <disable_collisions link1="RLF_link" link2="RLT_link" reason="Adjacent" />
+    <disable_collisions link1="RLL_link" link2="RLS_link" reason="Adjacent" />
+    <disable_collisions link1="RLL_link" link2="RLT_link" reason="Never" />
+    <disable_collisions link1="RLS_link" link2="RLT_link" reason="Never" />
+    <disable_collisions link1="RLS_link" link2="RRS_link" reason="Never" />
+    <disable_collisions link1="RLS_link" link2="body_link" reason="Adjacent" />
+    <disable_collisions link1="RRF_link" link2="RRL_link" reason="Adjacent" />
+    <disable_collisions link1="RRF_link" link2="RRT_link" reason="Adjacent" />
+    <disable_collisions link1="RRL_link" link2="RRS_link" reason="Adjacent" />
+    <disable_collisions link1="RRL_link" link2="RRT_link" reason="Never" />
+    <disable_collisions link1="RRS_link" link2="RRT_link" reason="Never" />
+    <disable_collisions link1="RRS_link" link2="body_link" reason="Adjacent" />
+</robot>
