@@ -28,4 +28,35 @@ joint_state_controller:
   type: joint_state_controller/JointStateController
   publish_rate: 50
 controller_list:
-  []
+  - name: FR_leg_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - FRS_joint
+      - FRL_joint
+      - FRF_joint
+  - name: FL_leg_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - FLS_joint
+      - FLL_joint
+      - FLF_joint
+  - name: RR_leg_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - RRS_joint
+      - RRL_joint
+      - RRF_joint
+  - name: RL_leg_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - RLS_joint
+      - RLL_joint
+      - RLF_joint

@@ -10,32 +10,56 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="FR_leg">
+        <link name="body_link" />
+        <link name="FRS_link" />
+        <link name="FRL_link" />
+        <link name="FRF_link" />
+        <link name="FRT_link" />
         <joint name="body_joint" />
         <joint name="FRS_joint" />
         <joint name="FRL_joint" />
         <joint name="FRF_joint" />
         <joint name="FRT_joint" />
+        <chain base_link="body_link" tip_link="FRT_link" />
     </group>
     <group name="FL_leg">
+        <link name="body_link" />
+        <link name="FLS_link" />
+        <link name="FLL_link" />
+        <link name="FLF_link" />
+        <link name="FLT_link" />
         <joint name="body_joint" />
         <joint name="FLS_joint" />
         <joint name="FLL_joint" />
         <joint name="FLF_joint" />
         <joint name="FLT_joint" />
+        <chain base_link="body_link" tip_link="FLT_link" />
     </group>
     <group name="RR_leg">
+        <link name="body_link" />
+        <link name="RRS_link" />
+        <link name="RRL_link" />
+        <link name="RRF_link" />
+        <link name="RRT_link" />
         <joint name="body_joint" />
         <joint name="RRS_joint" />
         <joint name="RRL_joint" />
         <joint name="RRF_joint" />
         <joint name="RRT_joint" />
+        <chain base_link="body_link" tip_link="RRT_link" />
     </group>
     <group name="RL_leg">
+        <link name="body_link" />
+        <link name="RLS_link" />
+        <link name="RLL_link" />
+        <link name="RLF_link" />
+        <link name="RLT_link" />
         <joint name="body_joint" />
         <joint name="RLS_joint" />
         <joint name="RLL_joint" />
         <joint name="RLF_joint" />
         <joint name="RLT_joint" />
+        <chain base_link="body_link" tip_link="RLT_link" />
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
     <group_state name="home_position" group="FR_leg">
