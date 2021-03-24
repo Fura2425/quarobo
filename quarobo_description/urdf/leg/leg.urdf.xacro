@@ -4,7 +4,7 @@
     <xacro:include filename="$(find quarobo_description)/urdf/material/material.urdf.xacro"/>
 
 
-    <xacro:macro name="leg_macro" params="prefix parent type mesh color *joint_axis *joint_origin">
+    <xacro:macro name="leg_macro" params="prefix parent type mesh color *joint_axis *joint_origin *collision_size">
 
         <joint name="${prefix}_joint" type="${type}">
             <parent link="${parent}"/>
@@ -17,7 +17,7 @@
         <link name="${prefix}_link">
             <inertial>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
-                <mass value="0.02"/>
+                <mass value="0.020"/>
                 <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1"/>
             </inertial>
             <visual>
@@ -30,7 +30,7 @@
             <collision>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <xacro:insert_block name="link_box"/>
+                    <xacro:insert_block name="collision_size"/>
                 </geometry>
             </collision>
         </link>
