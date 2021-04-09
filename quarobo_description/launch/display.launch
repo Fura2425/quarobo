@@ -1,9 +1,10 @@
 <launch>
-    <arg name="model" />
+    <arg name="model" default="$(find quarobo_description)/robots/quarobo.urdf.xacro"/>
+    <arg name="model_sim" default="$(find quarobo_description)/robots/quarobo_sim.urdf.xacro"/>
     <arg name="gui" default="true" />
     <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
 
-    <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+    <param name="robot_description" command="$(find xacro)/xacro.py $(arg model_sim)" />
 
     <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
     <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>

@@ -34,6 +34,10 @@
                 </geometry>
             </collision>
         </link>
+        <gazebo reference="${prefix}_link">
+            <material>Gazebo/White</material>
+        </gazebo>
+
     </xacro:macro>
 
 </robot>

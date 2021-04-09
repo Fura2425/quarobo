@@ -1,0 +1,8 @@
+<launch>
+    <arg name="model" default="$(find quarobo_description)/robots/quarobo_sim.urdf.xacro"/>
+    <param name="quarobo_description" command="$(find xacro)/xacro $(arg model)"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+
+    <node name="gt" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model quarobo -param quarobo_description"/>
+</launch>

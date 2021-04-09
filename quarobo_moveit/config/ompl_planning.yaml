@@ -146,6 +146,8 @@ FR_leg:
     - LazyPRMstar
     - SPARS
     - SPARStwo
+  projection_evaluator: joints(FRS_joint,FRL_joint)
+  longest_valid_segment_fraction: 0.005
 FL_leg:
   default_planner_config: RRTConnect
   planner_configs:
@@ -172,6 +174,8 @@ FL_leg:
     - LazyPRMstar
     - SPARS
     - SPARStwo
+  projection_evaluator: joints(FLS_joint,FLL_joint)
+  longest_valid_segment_fraction: 0.005
 RR_leg:
   default_planner_config: RRTConnect
   planner_configs:
@@ -198,6 +202,8 @@ RR_leg:
     - LazyPRMstar
     - SPARS
     - SPARStwo
+  projection_evaluator: joints(RRS_joint,RRL_joint)
+  longest_valid_segment_fraction: 0.005
 RL_leg:
   default_planner_config: RRTConnect
   planner_configs:
@@ -224,3 +230,5 @@ RL_leg:
     - LazyPRMstar
     - SPARS
     - SPARStwo
+  projection_evaluator: joints(RLS_joint,RLL_joint)
+  longest_valid_segment_fraction: 0.005
