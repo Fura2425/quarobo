@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <arg name="model" default="$(find quarobo_description)/robots/quarobo_sim.urdf.xacro"/>
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model quarobo" />
+
+    <rosparam file="$(find quarobo_description)/config/joint_controller.yaml" command="load"/>
+    <node name="controller_spawner" pkg="controller_manager"
+        type="spawner" respawn="false"
+        output="screen" args="joint_state_controller FL_joint_controller"/>
+</launch>
