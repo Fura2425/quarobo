@@ -1,7 +1,7 @@
 # Simulation settings for using moveit_sim_controllers
 moveit_sim_hw_interface:
-  joint_model_group: FR_leg
-  joint_model_group_pose: home_position
+  joint_model_group: FR_ik
+  joint_model_group_pose: walk_pose
 # Settings for ros_control_boilerplate control loop
 generic_hw_control_loop:
   loop_hz: 300
@@ -28,52 +28,92 @@ joint_state_controller:
   type: joint_state_controller/JointStateController
   publish_rate: 50
 controller_list:
-  - name: FR_leg_controller
-    action_ns: follow_joint_trajectory
-    default: True
-    type: FollowJointTrajectory
-    joints:
-      - FRS_joint
-      - FRL_joint
-      - FRF_joint
-  - name: FL_leg_controller
-    action_ns: follow_joint_trajectory
-    default: True
-    type: FollowJointTrajectory
-    joints:
-      - FLS_joint
-      - FLL_joint
-      - FLF_joint
-  - name: RR_leg_controller
-    action_ns: follow_joint_trajectory
-    default: True
-    type: FollowJointTrajectory
-    joints:
-      - RRS_joint
-      - RRL_joint
-      - RRF_joint
-  - name: RL_leg_controller
-    action_ns: follow_joint_trajectory
-    default: True
-    type: FollowJointTrajectory
-    joints:
-      - RLS_joint
-      - RLL_joint
-      - RLF_joint
-  - name: Body_controller
-    action_ns: follow_joint_trajectory
-    default: True
-    type: FollowJointTrajectory
-    joints:
-      - FLS_joint
-      - FLL_joint
-      - FLF_joint
-      - FRS_joint
-      - FRL_joint
-      - FRF_joint
-      - RLS_joint
-      - RLL_joint
-      - RLF_joint
-      - RRS_joint
-      - RRL_joint
-      - RRF_joint
+  []
+fr_joint_trajectory_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - FRS_joint
+    - FRL_joint
+    - FRF_joint
+  gains:
+    FRS_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FRL_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FRF_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+fl_joint_trajectory_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - FLS_joint
+    - FLL_joint
+    - FLF_joint
+  gains:
+    FLS_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FLL_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FLF_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+rr__joint_trajectory_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - RRS_joint
+    - RRL_joint
+    - RRF_joint
+  gains:
+    RRS_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    RRL_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    RRF_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+rl__joint_trajectory_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - RLS_joint
+    - RLL_joint
+    - RLF_joint
+  gains:
+    RLS_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    RLL_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    RLF_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

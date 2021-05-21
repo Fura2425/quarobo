@@ -120,7 +120,7 @@ planner_configs:
     sparse_delta_fraction: 0.25  # delta fraction for connection distance. This value represents the visibility range of sparse samples. default: 0.25
     dense_delta_fraction: 0.001  # delta fraction for interface detection. default: 0.001
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
-FR_leg:
+FR_ik:
   default_planner_config: RRTConnect
   planner_configs:
     - SBL
@@ -146,9 +146,7 @@ FR_leg:
     - LazyPRMstar
     - SPARS
     - SPARStwo
-  projection_evaluator: joints(FRS_joint,FRL_joint)
-  longest_valid_segment_fraction: 0.005
-FL_leg:
+FL_ik:
   default_planner_config: RRTConnect
   planner_configs:
     - SBL
@@ -174,9 +172,7 @@ FL_leg:
     - LazyPRMstar
     - SPARS
     - SPARStwo
-  projection_evaluator: joints(FLS_joint,FLL_joint)
-  longest_valid_segment_fraction: 0.005
-RR_leg:
+RR_ik:
   default_planner_config: RRTConnect
   planner_configs:
     - SBL
@@ -202,9 +198,7 @@ RR_leg:
     - LazyPRMstar
     - SPARS
     - SPARStwo
-  projection_evaluator: joints(RRS_joint,RRL_joint)
-  longest_valid_segment_fraction: 0.005
-RL_leg:
+RL_ik:
   default_planner_config: RRTConnect
   planner_configs:
     - SBL
@@ -230,5 +224,3 @@ RL_leg:
     - LazyPRMstar
     - SPARS
     - SPARStwo
-  projection_evaluator: joints(RLS_joint,RLL_joint)
-  longest_valid_segment_fraction: 0.005

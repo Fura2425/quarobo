@@ -9,86 +9,78 @@
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
-    <group name="FR_leg">
+    <group name="FR_ik">
+        <link name="body_link" />
         <link name="FRS_link" />
         <link name="FRL_link" />
         <link name="FRF_link" />
         <link name="FRT_link" />
+        <joint name="body_joint" />
         <joint name="FRS_joint" />
         <joint name="FRL_joint" />
         <joint name="FRF_joint" />
         <joint name="FRT_joint" />
+        <chain base_link="body_link" tip_link="FRT_link" />
     </group>
-    <group name="FL_leg">
+    <group name="FL_ik">
+        <link name="body_link" />
         <link name="FLS_link" />
         <link name="FLL_link" />
         <link name="FLF_link" />
         <link name="FLT_link" />
+        <joint name="body_joint" />
         <joint name="FLS_joint" />
         <joint name="FLL_joint" />
         <joint name="FLF_joint" />
         <joint name="FLT_joint" />
+        <chain base_link="body_link" tip_link="FLT_link" />
     </group>
-    <group name="RR_leg">
+    <group name="RR_ik">
+        <link name="body_link" />
         <link name="RRS_link" />
         <link name="RRL_link" />
         <link name="RRF_link" />
         <link name="RRT_link" />
+        <joint name="body_joint" />
         <joint name="RRS_joint" />
         <joint name="RRL_joint" />
         <joint name="RRF_joint" />
         <joint name="RRT_joint" />
+        <chain base_link="body_link" tip_link="RRT_link" />
     </group>
-    <group name="RL_leg">
+    <group name="RL_ik">
+        <link name="body_link" />
         <link name="RLS_link" />
         <link name="RLL_link" />
         <link name="RLF_link" />
         <link name="RLT_link" />
+        <joint name="body_joint" />
         <joint name="RLS_joint" />
         <joint name="RLL_joint" />
         <joint name="RLF_joint" />
         <joint name="RLT_joint" />
+        <chain base_link="body_link" tip_link="RLT_link" />
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
-    <group_state name="home_position" group="FR_leg">
-        <joint name="FRF_joint" value="-0.8" />
-        <joint name="FRL_joint" value="0.5" />
-        <joint name="FRS_joint" value="0.15" />
+    <group_state name="walk_pose" group="FR_ik">
+        <joint name="FRF_joint" value="-0.9" />
+        <joint name="FRL_joint" value="0.7" />
+        <joint name="FRS_joint" value="0.1" />
     </group_state>
-    <group_state name="home_position" group="FL_leg">
-        <joint name="FLF_joint" value="-0.8" />
-        <joint name="FLL_joint" value="0.5" />
-        <joint name="FLS_joint" value="-0.15" />
+    <group_state name="walk_pose" group="FL_ik">
+        <joint name="FLF_joint" value="-0.9" />
+        <joint name="FLL_joint" value="0.7" />
+        <joint name="FLS_joint" value="-0.1" />
     </group_state>
-    <group_state name="home_position" group="RR_leg">
-        <joint name="RRF_joint" value="-0.8" />
-        <joint name="RRL_joint" value="0.5" />
-        <joint name="RRS_joint" value="0.15" />
+    <group_state name="walk_pose" group="RR_ik">
+        <joint name="RRF_joint" value="-0.9" />
+        <joint name="RRL_joint" value="0.7" />
+        <joint name="RRS_joint" value="0.1" />
     </group_state>
-    <group_state name="home_position" group="RL_leg">
-        <joint name="RLF_joint" value="-0.8" />
-        <joint name="RLL_joint" value="0.5" />
-        <joint name="RLS_joint" value="-0.15" />
-    </group_state>
-    <group_state name="waiting_position" group="FR_leg">
-        <joint name="FRF_joint" value="-2.5" />
-        <joint name="FRL_joint" value="1" />
-        <joint name="FRS_joint" value="0" />
-    </group_state>
-    <group_state name="waiting_position" group="FL_leg">
-        <joint name="FLF_joint" value="-2.5" />
-        <joint name="FLL_joint" value="1" />
-        <joint name="FLS_joint" value="-0" />
-    </group_state>
-    <group_state name="waiting_position" group="RR_leg">
-        <joint name="RRF_joint" value="-2.5" />
-        <joint name="RRL_joint" value="1" />
-        <joint name="RRS_joint" value="0" />
-    </group_state>
-    <group_state name="waiting_position" group="RL_leg">
-        <joint name="RLF_joint" value="-2.5" />
-        <joint name="RLL_joint" value="1" />
-        <joint name="RLS_joint" value="0" />
+    <group_state name="walk_pose" group="RL_ik">
+        <joint name="RLF_joint" value="-0.9" />
+        <joint name="RLL_joint" value="0.7" />
+        <joint name="RLS_joint" value="-0.1" />
     </group_state>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="FLF_link" link2="FLL_link" reason="Adjacent" />
