@@ -1,0 +1,43 @@
+controller_manager_ns: controller_manager
+controller_list:
+  - name: /fr_trajectory_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - FRS_joint
+      - FRL_joint
+      - FRF_joint
+  - name: /fl_trajectory_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - FLS_joint
+      - FLL_joint
+      - FLF_joint
+  - name: /rr_trajectory_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - RRS_joint
+      - RRL_joint
+      - RRF_joint
+  - name: /rl_trajectory_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - RLS_joint
+      - RLL_joint
+      - RLF_joint
+  #initial:  # Define initial robot poses.
+  #  - group: FR_ik
+  #    pose: walk_pose
+  #  - group: FL_ik
+  #    pose: walk_pose
+  #  - group: RR_ik
+  #    pose: walk_pose
+  #  - group: RL_ik
+  #    pose: walk_pose

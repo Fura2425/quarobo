@@ -13,14 +13,14 @@
 ros::NodeHandle nh;
 
 // Front Left        // Front Right
-int FLS_angle = 90;  int FRS_angle = 90;
-int FLL_angle = 90;  int FRL_angle = 90;
-int FLF_angle = 90;  int FRF_angle = 90;
+int FLS_angle = 1520;  int FRS_angle = 1520;
+int FLL_angle = 1520;  int FRL_angle = 1520;
+int FLF_angle = 1520;  int FRF_angle = 1520;
 
 // Rear Left         // Rear Right
-int RLS_angle = 90;  int RRS_angle = 90;
-int RLL_angle = 90;  int RRL_angle = 90;
-int RLF_angle = 90;  int RRF_angle = 90;
+int RLS_angle = 1520;  int RRS_angle = 1520;
+int RLL_angle = 1520;  int RRL_angle = 1520;
+int RLF_angle = 1520;  int RRF_angle = 1520;
 
 Servo FRS_sv, FRL_sv, FRF_sv,
       FLS_sv, FLL_sv, FLF_sv,
@@ -53,31 +53,31 @@ void setup(){
     nh.initNode();
     nh.subscribe(sub);
 
-    FRS_sv.attach(39);
-    FRL_sv.attach(40);
-    FRF_sv.attach(41);
+    FRS_sv.attach(39, 560, 2480);
+    FRL_sv.attach(40, 560, 2480);
+    FRF_sv.attach(41, 560, 2480);
 
-    FLS_sv.attach(42);
-    FLL_sv.attach(43);
-    FLF_sv.attach(44);
+    FLS_sv.attach(42, 560, 2480);
+    FLL_sv.attach(43, 560, 2480);
+    FLF_sv.attach(44, 560, 2480);
 
-    RRS_sv.attach(45);
-    RRL_sv.attach(46);
-    RRF_sv.attach(47);
+    RRS_sv.attach(45, 560, 2480);
+    RRL_sv.attach(46, 560, 2480);
+    RRF_sv.attach(47, 560, 2480);
 
-    RLS_sv.attach(48);
-    RLL_sv.attach(49);
-    RLF_sv.attach(50);
+    RLS_sv.attach(48, 560, 2480);
+    RLL_sv.attach(49, 560, 2480);
+    RLF_sv.attach(50, 560, 2480);
 }
 
 void loop(){
-    FLS_sv.write(FLS_angle);  FRS_sv.write(FRS_angle);
-    FLL_sv.write(FLL_angle);  FRL_sv.write(FRL_angle);
-    FLF_sv.write(FLF_angle);  FRF_sv.write(FRF_angle);
+    FLS_sv.writeMicroseconds(FLS_angle);  FRS_sv.writeMicroseconds(FRS_angle);
+    FLL_sv.writeMicroseconds(FLL_angle);  FRL_sv.writeMicroseconds(FRL_angle);
+    FLF_sv.writeMicroseconds(FLF_angle);  FRF_sv.writeMicroseconds(FRF_angle);
 
-    RLS_sv.write(RLS_angle);  RRS_sv.write(RRS_angle);
-    RLL_sv.write(RLL_angle);  RRL_sv.write(RRL_angle);
-    RLF_sv.write(RLF_angle);  RRF_sv.write(RRF_angle);
+    RLS_sv.writeMicroseconds(RLS_angle);  RRS_sv.writeMicroseconds(RRS_angle);
+    RLL_sv.writeMicroseconds(RLL_angle);  RRL_sv.writeMicroseconds(RRL_angle);
+    RLF_sv.writeMicroseconds(RLF_angle);  RRF_sv.writeMicroseconds(RRF_angle);
 
     nh.spinOnce();
     delay(1);

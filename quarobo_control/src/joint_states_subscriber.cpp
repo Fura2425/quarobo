@@ -10,21 +10,21 @@ int value_map(float x, float in_min, float in_max, int out_min, int out_max);
 std_msgs::Int32MultiArray joint_array;
 
 void joint_state_cb(const sensor_msgs::JointState& joint_states){
-    joint_array.data[0] = value_map(joint_states.position[0], -2.61, 2.61, 180, 0);
-    joint_array.data[1] = value_map(joint_states.position[1], -2.61, 2.61, 0, 180);
-    joint_array.data[2] = value_map(joint_states.position[2], -2.61, 2.61, 180, 0);
+    joint_array.data[0] = value_map(joint_states.position[0], -2.61, 2.61, 2480, 560);
+    joint_array.data[1] = value_map(joint_states.position[1], -2.61, 2.61, 560, 2480);
+    joint_array.data[2] = value_map(joint_states.position[2], -2.61, 2.61, 2480, 560);
 
-    joint_array.data[3] = value_map(joint_states.position[3], -2.61, 2.61, 180, 0);
-    joint_array.data[4] = value_map(joint_states.position[4], -2.61, 2.61, 180, 0);
-    joint_array.data[5] = value_map(joint_states.position[5], -2.61, 2.61, 0, 180);
+    joint_array.data[3] = value_map(joint_states.position[3], -2.61, 2.61, 2480, 560);
+    joint_array.data[4] = value_map(joint_states.position[4], -2.61, 2.61, 2480, 560);
+    joint_array.data[5] = value_map(joint_states.position[5], -2.61, 2.61, 560, 2480);
 
-    joint_array.data[6] = value_map(joint_states.position[6], -2.61, 2.61, 0, 180);
-    joint_array.data[7] = value_map(joint_states.position[7], -2.61, 2.61, 0, 180);
-    joint_array.data[8] = value_map(joint_states.position[8], -2.61, 2.61, 180, 0);
+    joint_array.data[6] = value_map(joint_states.position[6], -2.61, 2.61, 560, 2480);
+    joint_array.data[7] = value_map(joint_states.position[7], -2.61, 2.61, 560, 2480);
+    joint_array.data[8] = value_map(joint_states.position[8], -2.61, 2.61, 2480, 560);
 
-    joint_array.data[9] = value_map(joint_states.position[9], -2.61, 2.61, 0, 180);
-    joint_array.data[10] = value_map(joint_states.position[10], -2.61, 2.61, 180, 0);
-    joint_array.data[11] = value_map(joint_states.position[11], -2.61, 2.61, 0, 180);
+    joint_array.data[9] = value_map(joint_states.position[9], -2.61, 2.61, 560, 2480);
+    joint_array.data[10] = value_map(joint_states.position[10], -2.61, 2.61, 2480, 560);
+    joint_array.data[11] = value_map(joint_states.position[11], -2.61, 2.61, 560, 2480);
 
     ROS_INFO("--Joint Angle-------");
     ROS_INFO("FRS_joint  angle: %d\n", joint_array.data[0]);

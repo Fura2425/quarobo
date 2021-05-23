@@ -29,7 +29,7 @@ joint_state_controller:
   publish_rate: 50
 controller_list:
   []
-fr_joint_trajectory_controller:
+fr_trajectory_controller:
   type: effort_controllers/JointTrajectoryController
   joints:
     - FRS_joint
@@ -51,7 +51,7 @@ fr_joint_trajectory_controller:
       d: 1
       i: 1
       i_clamp: 1
-fl_joint_trajectory_controller:
+fl_trajectory_controller:
   type: effort_controllers/JointTrajectoryController
   joints:
     - FLS_joint
@@ -73,7 +73,7 @@ fl_joint_trajectory_controller:
       d: 1
       i: 1
       i_clamp: 1
-rr__joint_trajectory_controller:
+rr_trajectory_controller:
   type: effort_controllers/JointTrajectoryController
   joints:
     - RRS_joint
@@ -95,7 +95,7 @@ rr__joint_trajectory_controller:
       d: 1
       i: 1
       i_clamp: 1
-rl__joint_trajectory_controller:
+rl_trajectory_controller:
   type: effort_controllers/JointTrajectoryController
   joints:
     - RLS_joint
