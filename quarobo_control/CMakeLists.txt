@@ -15,6 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
   controller_manager
   joint_state_controller
   robot_state_publisher
+  moveit_ros_planning_interface
+  control_msgs
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -140,6 +143,7 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/quarobo_control_node.cpp)
 #add_executable(moveit_commander src/moveit_commander.cpp)
 add_executable(jointState_processing src/joint_states_subscriber.cpp)
+add_executable(moveit_commander src/moveit_commander.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -157,6 +161,7 @@ add_executable(jointState_processing src/joint_states_subscriber.cpp)
 # )
 #target_link_libraries(moveit_commander ${catkin_LIBRARIES})
 target_link_libraries(jointState_processing ${catkin_LIBRARIES})
+target_link_libraries(moveit_commander ${catkin_LIBRARIES})
 
 #############
 ## Install ##

@@ -3,10 +3,10 @@
 
     <xacro:include filename="$(find quarobo_description)/urdf/leg/leg_sim.urdf.xacro"/>
 
-    <link name="world"/>
+    <link name="base_link"/>
 
     <!-- === body === -->
-    <xacro:leg_macro_fi prefix="body" parent="world" mesh="body.stl" color="pink">
+    <xacro:leg_macro_fi prefix="body" parent="base_link" mesh="body.stl" color="pink">
         <origin xyz="0 0 0.16505" rpy="0 0 0"/>
         <box size="0.07160 0.09810 0.02410"/>
     </xacro:leg_macro_fi>

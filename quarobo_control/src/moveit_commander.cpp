@@ -8,19 +8,18 @@ int main(int argc, char **argv) {
     ros::AsyncSpinner spinner(2);
     spinner.start();
 
-    // Set up the FR_ik planning interface
-    moveit::planning_interface::MoveGroupInterface fr("FR_ik");
-    moveit::planning_interface::MoveGroupInterface fl("FL_ik");
-    moveit::planning_interface::MoveGroupInterface rr("RR_ik");
-    moveit::planning_interface::MoveGroupInterface rl("RL_ik");
+    // Set up the quarobo planning interface
+    static const std::string PLANNING_GROUP = "FR_ik";
+    moveit::planning_interface::MoveGroupInterface move_group(PLANNING_GROUP);
+
 
     // Prepare
     ROS_INFO("Moving to prepare pose");
-    ROS_INFO_NAMED("tutorial", "Reference frame: %s", FR_ik.getPlanningFrame().c_str());
-    ROS_INFO_NAMED("tutorial", "End effector link: %s", FR_ik.getEndEffectorLink().c_str());
-    FR_ik.setPlanningTime(0.050);
-    FR_ik.setPlannerId("RRTConnect");
-    FR_ik.setGoalTolerance(0.01);
+    ROS_INFO_NAMED("tutorial", "Reference frame: %s", move_group.getPlanningFrame().c_str());
+    ROS_INFO_NAMED("tutorial", "End effector link: %s", move_group.getEndEffectorLink().c_str());
+    move_group.setPlanningTime(0.050);
+    move_group.setPlannerId("RRTConnect");
+    move_group.setGoalTolerance(0.01);
 
     // pose1
     geometry_msgs::PoseStamped pose1;
@@ -57,32 +56,32 @@ int main(int argc, char **argv) {
     moveit::planning_interface::MoveItErrorCode ret;
 
     ROS_INFO("move to WP1");
-    FR_ik.setPoseTarget(pose1);
-    ret = FR_ik.move();
+    move_group.setPoseTarget(pose1);
+    ret = move_group.move();
     if (!ret) {
         ROS_WARN("Fail: %i", ret.val);
     }
     ros::Duration(0.5).sleep();
 
     ROS_INFO("move to WP2");
-    FR_ik.setPoseTarget(pose2);
-    ret = FR_ik.move();
+    move_group.setPoseTarget(pose2);
+    ret = move_group.move();
     if (!ret) {
         ROS_WARN("Fail: %i", ret.val);
     }
     ros::Duration(0.5).sleep();
 
     ROS_INFO("move to WP3");
-    FR_ik.setPoseTarget(pose3);
-    ret = FR_ik.move();
+    move_group.setPoseTarget(pose3);
+    ret = move_group.move();
     if (!ret) {
         ROS_WARN("Fail: %i", ret.val);
     }
     ros::Duration(0.5).sleep();
 
     ROS_INFO("move to WP4");
-    FR_ik.setPoseTarget(pose4);
-    ret = FR_ik.move();
+    move_group.setPoseTarget(pose4);
+    ret = move_group.move();
     if (!ret) {
         ROS_WARN("Fail: %i", ret.val);
     }

@@ -63,8 +63,8 @@
   <exec_depend>tf</exec_depend>
 
   <depend>controller_manager</depend>
-  <depend>control_msgs</depend>
-  <depend>sensor_msgs</depend>
+  <depend>control_msgs</run_depend>
+  <depend>sensor_msgs</run_depend>
   <depend>joint_state_controller</depend>
   <depend>robot_state_publisher</depend>
   <depend>moveit_ros_planning_interface</depend>

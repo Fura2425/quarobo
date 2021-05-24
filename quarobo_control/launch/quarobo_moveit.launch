@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <launch>
-    <arg name="model" default="$(find quarobo_description)/robots/quarobo.urdf.xacro" />
-    <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+    <arg name="model" default="$(find quarobo_description)/robots/quarobo_sim.urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
         <!-- gazebo world -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
@@ -9,11 +9,11 @@
         <!-- gazebo model -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model quarobo" />
     <rosparam file="$(find quarobo_control)/config/trajectory_controller.yaml" command="load"/>
-    <node name="quarobo_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="fr_trajectory_controller fl_trajectory_controller rr_trajectory_controller rl_trajectory_controller joint_state_controller"/>
+    <node name="quarobo_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/quarobo" args="fr_trajectory_controller fl_trajectory_controller rr_trajectory_controller rl_trajectory_controller joint_state_controller"/>
 
         <!-- common -->
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
 
         <!-- moveit setting -->
     <param name="robot_description_semantic" textfile="$(find quarobo_moveit)/config/quarobo.srdf" />
@@ -30,7 +30,7 @@
         default_planner_request_adapters/FixStartStateCollision
         default_planner_request_adapters/FixStartStatePathConstraints" />
 
-    <node name="move_group"  pkg="moveit_ros_move_group" type="move_group" respawn="false" output="screen" args="">
+    <node name="move_group"  pkg="moveit_ros_move_group" type="move_group" respawn="false" output="screen" args="--debug">
         <!-- Set the display variable, in case OpenGL code is used internally -->
         <env name="DISPLAY" value="$(optenv DISPLAY :0)" />
 
