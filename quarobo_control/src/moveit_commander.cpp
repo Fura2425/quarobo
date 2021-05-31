@@ -1,5 +1,15 @@
 #include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit/planning_scene_interface/planning_scene_interface.h>
+
+#include <moveit_msgs/DisplayRobotState.h>
+#include <moveit_msgs/DisplayTrajectory.h>
+
+#include <moveit_msgs/AttachedCollisionObject.h>
+#include <moveit_msgs/CollisionObject.h>
+
+#include <moveit_visual_tools/moveit_visual_tools.h>
+
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "moveit_commander");
@@ -9,83 +19,53 @@ int main(int argc, char **argv) {
     spinner.start();
 
     // Set up the quarobo planning interface
-    static const std::string PLANNING_GROUP = "FR_ik";
-    moveit::planning_interface::MoveGroupInterface move_group(PLANNING_GROUP);
+    static const std::string FR_PLANNING_GROUP = "FR_ik";
+    //moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+    moveit::planning_interface::MoveGroupInterface fr_group(FR_PLANNING_GROUP);
+    //const robot_state::JointModelGroup* joint_model_group =
+    //    fr_group.getCurrentState()->getJointModelGroup(FR_PLANNING_GROUP);
 
+    //namespace rvt = rviz_visual_tools;
+    //moveit_visual_tools::MoveItVisualTools visual_tools("FRT_link");
+    //visual_tools.deleteAllMarkers();
+
+    //visual_tools.loadRemoteControl();
+
+    //Eigen::Isometry3d text_pose = Eigen::Isometry3d::Identity();
+    //text_pose.translation().z() = 0.029427;
+    //visual_tools.publishText(text_pose, "MoveGroupInterface Demo", rvt::WHITE, rvt::XLARGE);
 
     // Prepare
     ROS_INFO("Moving to prepare pose");
-    ROS_INFO_NAMED("tutorial", "Reference frame: %s", move_group.getPlanningFrame().c_str());
-    ROS_INFO_NAMED("tutorial", "End effector link: %s", move_group.getEndEffectorLink().c_str());
-    move_group.setPlanningTime(0.050);
-    move_group.setPlannerId("RRTConnect");
-    move_group.setGoalTolerance(0.01);
+    ROS_INFO_NAMED("tutorial", "Reference frame: %s", fr_group.getPlanningFrame().c_str());
+    ROS_INFO_NAMED("tutorial", "End effector link: %s", fr_group.getEndEffectorLink().c_str());
+    fr_group.setPlanningTime(0.050);
+    fr_group.setPlannerId("RRTConnect");
+    fr_group.setGoalTolerance(0.01);
 
     // pose1
     geometry_msgs::PoseStamped pose1;
-    pose1.header.frame_id = "base_link";
-    pose1.pose.position.x = 0.00;
-    pose1.pose.position.y = 0.00;
-    pose1.pose.position.z = 0.01;
-    pose1.pose.orientation.w = 1.0;
-
-    // pose2
-    geometry_msgs::PoseStamped pose2;
-    pose2.header.frame_id = "base_link";
-    pose2.pose.position.x = 0.00;
-    pose2.pose.position.y = 0.00;
-    pose2.pose.position.z = 0.00;
-    pose2.pose.orientation.w = 1.0;
-
-    // pose3
-    geometry_msgs::PoseStamped pose3;
-    pose3.header.frame_id = "base_link";
-    pose3.pose.position.x = 0.00;
-    pose3.pose.position.y = 0.00;
-    pose3.pose.position.z = 0.01;
-    pose3.pose.orientation.w = 1.0;
-
-    // pose4
-    geometry_msgs::PoseStamped pose4;
-    pose4.header.frame_id = "base_link";
-    pose4.pose.position.x = 0.00;
-    pose4.pose.position.y = 0.00;
-    pose4.pose.position.z = 0.00;
-    pose4.pose.orientation.w = 1.0;
+    pose1.header.frame_id = "FRT_link";
+    pose1.pose.position.x = -0.059191;
+    pose1.pose.position.y = -0.062673;
+    pose1.pose.position.z = 0.029157;
+    pose1.pose.orientation.x = 0.59244;
+    pose1.pose.orientation.y = 0.040214;
+    pose1.pose.orientation.z = -0.02963;
+    pose1.pose.orientation.w = 0.80406;
 
     moveit::planning_interface::MoveItErrorCode ret;
 
+
     ROS_INFO("move to WP1");
-    move_group.setPoseTarget(pose1);
-    ret = move_group.move();
-    if (!ret) {
-        ROS_WARN("Fail: %i", ret.val);
-    }
-    ros::Duration(0.5).sleep();
-
-    ROS_INFO("move to WP2");
-    move_group.setPoseTarget(pose2);
-    ret = move_group.move();
-    if (!ret) {
-        ROS_WARN("Fail: %i", ret.val);
-    }
-    ros::Duration(0.5).sleep();
-
-    ROS_INFO("move to WP3");
-    move_group.setPoseTarget(pose3);
-    ret = move_group.move();
-    if (!ret) {
-        ROS_WARN("Fail: %i", ret.val);
-    }
-    ros::Duration(0.5).sleep();
-
-    ROS_INFO("move to WP4");
-    move_group.setPoseTarget(pose4);
-    ret = move_group.move();
-    if (!ret) {
-        ROS_WARN("Fail: %i", ret.val);
-    }
-    ros::Duration(0.5).sleep();
+    fr_group.setPoseReferenceFrame("FRT_link");
+    fr_group.setNamedTarget("walk_pose");
+    //fr_group.setPoseTarget(pose1);
+    //ret = fr_group.move();
+    //if (!ret) {
+    //    ROS_WARN("Fail: %i", ret.val);
+    //}
+    fr_group.move();
 
     ros::shutdown();
     return 0;

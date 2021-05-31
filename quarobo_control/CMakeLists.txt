@@ -15,13 +15,22 @@ find_package(catkin REQUIRED COMPONENTS
   controller_manager
   joint_state_controller
   robot_state_publisher
+  moveit_visual_tools
   moveit_ros_planning_interface
+  moveit_visual_tools
   control_msgs
-  sensor_msgs
+  geometry_msgs
+  shape_msgs
+  actionlib
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS
+    system
+    filesystem
+    date_time
+    thread
+    )
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -112,7 +121,13 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES quarobo_control
-#  CATKIN_DEPENDS controller_manager joint_state_controller robot_state_publisher roscpp rospy std_msgs
+    CATKIN_DEPENDS
+        controller_manager
+        joint_state_controller
+        robot_state_publisher
+        roscpp
+        rospy
+        std_msgs
 #  DEPENDS system_lib
 )
 

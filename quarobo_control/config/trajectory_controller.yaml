@@ -43,7 +43,7 @@ quarobo:
       RLL_joint: {p: 100, d: 1, i: 1, i_clamp: 1}
       RLF_joint: {p: 100, d: 1, i: 1, i_clamp: 1}
 
-  # Publish all joint state -----------------------------
+    # Publish all joint state -----------------------------
   joint_state_controller:
     type: joint_state_controller/JointStateController
     publish_rate: 50
