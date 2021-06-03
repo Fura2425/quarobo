@@ -39,7 +39,7 @@ void joint_state_cb(const sensor_msgs::JointState& joint_states){
     ROS_INFO("RLS_joint  angle: %d\n", joint_array.data[9]);
     ROS_INFO("RLL_joint  angle: %d\n", joint_array.data[10]);
     ROS_INFO("RLF_joint  angle: %d\n", joint_array.data[11]);
-    ROS_INFO("--------------------");
+    ROS_INFO("--------------------\n");
 }
 
 int main(int argc, char **argv){
@@ -53,7 +53,7 @@ int main(int argc, char **argv){
         joint_array.data[i] = 90;
     }
 
-    ros::Subscriber jointState_subscribe = nh.subscribe("joint_states", 256, joint_state_cb);
+    ros::Subscriber jointState_subscribe = nh.subscribe("/quarobo/joint_states", 256, joint_state_cb);
 
     ros::Publisher jointState_publish = nh.advertise<std_msgs::Int32MultiArray>("processed_jointState", 120);
     ros::Rate loop_rate(10);

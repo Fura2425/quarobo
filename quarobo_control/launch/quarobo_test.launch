@@ -1,0 +1,4 @@
+<launch>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find quarobo_description)/robots/quarobo.urdf.xacro'" />
+    <include file="$(find quarobo_moveit)/launch/move_group.launch"/>
+</launch>

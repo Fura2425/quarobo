@@ -59,9 +59,9 @@
   <depend>sensor_msgs</depend>
   <depend>joint_state_controller</depend>
   <depend>robot_state_publisher</depend>
+  <depend>moveit_ros_planning_interface</depend>
 
   <build_depend>moveit_core</build_depend>
-  <build_depend>moveit_ros_planning_interface</build_depend>
   <build_depend>moveit_visual_tools</build_depend>
   <build_depend>control_msgs</build_depend>
   <build_depend>actionlib</build_depend>
@@ -69,7 +69,6 @@
   <build_depend>shape_msgs</build_depend>
 
   <exec_depend>moveit_core</exec_depend>
-  <exec_depend>moveit_ros_planning_interface</exec_depend>
   <exec_depend>moveit_visual_tools</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>shape_msgs</exec_depend>
