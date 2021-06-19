@@ -45,7 +45,7 @@ void servo_cb(const std_msgs::Int32MultiArray& joint_array){
     RLF_angle = joint_array.data[11];
 }
 
-ros::Subscriber<std_msgs::Int32MultiArray> sub("processed_jointState", servo_cb);
+ros::Subscriber<std_msgs::Int32MultiArray> sub("joint_angle_pulse", servo_cb);
 
 void setup(){
     pinMode(13, OUTPUT);

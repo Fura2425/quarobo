@@ -4,61 +4,61 @@
 joint_limits:
   FLF_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   FLL_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   FLS_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   FRF_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   FRL_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   FRS_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   RLF_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   RLL_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   RLS_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   RRF_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   RRL_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
   RRS_joint:
     has_velocity_limits: true
-    max_velocity: 0.5
+    max_velocity: 1.5
     has_acceleration_limits: false
     max_acceleration: 0
