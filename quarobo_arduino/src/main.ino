@@ -22,27 +22,27 @@ int RLS_angle = 1520;  int RRS_angle = 1520;
 int RLL_angle = 1520;  int RRL_angle = 1520;
 int RLF_angle = 1520;  int RRF_angle = 1520;
 
-Servo FRS_sv, FRL_sv, FRF_sv,
-      FLS_sv, FLL_sv, FLF_sv,
-      RRS_sv, RRL_sv, RRF_sv,
-      RLS_sv, RLL_sv, RLF_sv;
+Servo FLS_sv, FLL_sv, FLF_sv,
+      FRS_sv, FRL_sv, FRF_sv,
+      RLS_sv, RLL_sv, RLF_sv,
+      RRS_sv, RRL_sv, RRF_sv;
 
 void servo_cb(const std_msgs::Int32MultiArray& joint_array){
-    FRS_angle = joint_array.data[0];
-    FRL_angle = joint_array.data[1];
-    FRF_angle = joint_array.data[2];
+    FLS_angle = joint_array.data[0];
+    FLL_angle = joint_array.data[1];
+    FLF_angle = joint_array.data[2];
 
-    FLS_angle = joint_array.data[3];
-    FLL_angle = joint_array.data[4];
-    FLF_angle = joint_array.data[5];
+    FRS_angle = joint_array.data[3];
+    FRL_angle = joint_array.data[4];
+    FRF_angle = joint_array.data[5];
 
-    RRS_angle = joint_array.data[6];
-    RRL_angle = joint_array.data[7];
-    RRF_angle = joint_array.data[8];
+    RLS_angle = joint_array.data[6];
+    RLL_angle = joint_array.data[7];
+    RLF_angle = joint_array.data[8];
 
-    RLS_angle = joint_array.data[9];
-    RLL_angle = joint_array.data[10];
-    RLF_angle = joint_array.data[11];
+    RRS_angle = joint_array.data[9];
+    RRL_angle = joint_array.data[10];
+    RRF_angle = joint_array.data[11];
 }
 
 ros::Subscriber<std_msgs::Int32MultiArray> sub("joint_angle_pulse", servo_cb);
@@ -53,21 +53,21 @@ void setup(){
     nh.initNode();
     nh.subscribe(sub);
 
-    FRS_sv.attach(39, 560, 2480);
-    FRL_sv.attach(40, 560, 2480);
-    FRF_sv.attach(41, 560, 2480);
-
     FLS_sv.attach(42, 560, 2480);
     FLL_sv.attach(43, 560, 2480);
     FLF_sv.attach(44, 560, 2480);
 
-    RRS_sv.attach(45, 560, 2480);
-    RRL_sv.attach(46, 560, 2480);
-    RRF_sv.attach(47, 560, 2480);
+    FRS_sv.attach(39, 560, 2480);
+    FRL_sv.attach(40, 560, 2480);
+    FRF_sv.attach(41, 560, 2480);
 
     RLS_sv.attach(48, 560, 2480);
     RLL_sv.attach(49, 560, 2480);
     RLF_sv.attach(50, 560, 2480);
+
+    RRS_sv.attach(45, 560, 2480);
+    RRL_sv.attach(46, 560, 2480);
+    RRF_sv.attach(47, 560, 2480);
 }
 
 void loop(){

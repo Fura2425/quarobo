@@ -27,31 +27,22 @@ int main(int argc, char **argv) {
     for(auto& joint: jointValues) ROS_INFO("initial jointValues : %lf", joint);
     std::vector<double> home_posiValues = {0.0, 0.0, 0.0};
 
-    // pose1
-    //geometry_msgs::PoseStamped pose1;
-    //pose1.header.frame_id = "FRT_link";
-    //pose1.pose.position.x = -0.059191;
-    //pose1.pose.position.y = -0.062673;
-    //pose1.pose.position.z = 0.029157;
-    //pose1.pose.orientation.x = 0.59244;
-    //pose1.pose.orientation.y = 0.040214;
-    //pose1.pose.orientation.z = -0.02963;
-    //pose1.pose.orientation.w = 0.80406;
-
     moveit::planning_interface::MoveItErrorCode ret;
+
+    //fr_group.setEndEffectorLink("FRT_link");
 
     //fr_group.setPoseReferenceFrame("FRT_link");
     //fr_group.setPoseTarget(pose1);
 
-    ROS_INFO("move to WP1");
-    fr_group.setNamedTarget("walk_pose");
-    ret = fr_group.move();
-    if (!ret) {
-        ROS_WARN("Fail: %i", ret.val);
-    }
-    jointValues = fr_group.getCurrentJointValues();
-    for(auto& joint: jointValues) ROS_INFO("WP1 jointValues : %lf", joint);
-    ros::Duration(0.5).sleep();
+    //ROS_INFO("move to WP1");
+    //fr_group.setNamedTarget("walk_pose");
+    //ret = fr_group.move();
+    //if (!ret) {
+    //    ROS_WARN("Fail: %i", ret.val);
+    //}
+    //jointValues = fr_group.getCurrentJointValues();
+    //for(auto& joint: jointValues) ROS_INFO("WP1 jointValues : %lf", joint);
+    //ros::Duration(0.5).sleep();
 
     ROS_INFO("move to WP2");
     fr_group.setJointValueTarget(home_posiValues);
