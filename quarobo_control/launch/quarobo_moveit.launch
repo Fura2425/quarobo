@@ -12,11 +12,7 @@
     <node name="quarobo_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/quarobo" args="fr_trajectory_controller fl_trajectory_controller rr_trajectory_controller rl_trajectory_controller joint_state_controller"/>
 
         <!-- common -->
-    <arg name="gui" default="false"/>
-    <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-        <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
-    </node>
-    <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
         <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
     </node>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">

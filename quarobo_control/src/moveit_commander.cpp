@@ -24,8 +24,10 @@ int main(int argc, char **argv) {
 
     ROS_INFO("get current joint values");
     std::vector<double> jointValues = fr_group.getCurrentJointValues();
-    for(auto& joint: jointValues) ROS_INFO("initial jointValues : %lf", joint);
-    std::vector<double> home_posiValues = {0.0, 0.0, 0.0};
+    for(auto& i: jointValues) ROS_INFO("initial jointValues : %lf", i);
+    //std::vector<double> home_posiValues = {0.10, 0.80, -1.00};
+    std::vector<double> home_posiValues = {0.01, 0.01, 0.01};
+    for(auto& i: home_posiValues) ROS_INFO("%lf", i);
 
     moveit::planning_interface::MoveItErrorCode ret;
 
@@ -41,7 +43,7 @@ int main(int argc, char **argv) {
     //    ROS_WARN("Fail: %i", ret.val);
     //}
     //jointValues = fr_group.getCurrentJointValues();
-    //for(auto& joint: jointValues) ROS_INFO("WP1 jointValues : %lf", joint);
+    //for(auto& i: jointValues) ROS_INFO("WP1 jointValues : %lf", i);
     //ros::Duration(0.5).sleep();
 
     ROS_INFO("move to WP2");
@@ -51,7 +53,7 @@ int main(int argc, char **argv) {
         ROS_WARN("Fail: %i", ret.val);
     }
     jointValues = fr_group.getCurrentJointValues();
-    for(auto& joint: jointValues) ROS_INFO("WP2 jointValues : %lf", joint);
+    for(auto& i: jointValues) ROS_INFO("WP2 jointValues : %lf", i);
     ros::Duration(0.5).sleep();
 
     ROS_INFO("Finish!");
