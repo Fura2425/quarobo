@@ -4,7 +4,7 @@
     <xacro:include filename="$(find quarobo_description)/urdf/material/material.urdf.xacro"/>
 
         <!-- === fixed === -->
-    <xacro:macro name="leg_macro_fi" params="prefix parent mesh color *joint_origin">
+    <xacro:macro name="leg_macro_fi" params="prefix parent mesh color *joint_origin *collision_size">
 
         <joint name="${prefix}_joint" type="fixed">
             <parent link="${parent}"/>
@@ -28,12 +28,18 @@
                 </geometry>
                 <material name="${color}"/>
             </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <xacro:insert_block name="collision_size"/>
+                </geometry>
+            </collision>
         </link>
 
     </xacro:macro>
 
     <!-- === revolute === -->
-    <xacro:macro name="leg_macro_re" params="prefix parent mesh color *joint_origin *joint_axis">
+    <xacro:macro name="leg_macro_re" params="prefix parent mesh color *joint_origin *joint_axis *collision_origin *collision_size">
 
         <joint name="${prefix}_joint" type="revolute">
             <parent link="${parent}"/>
@@ -60,6 +66,12 @@
                 </geometry>
                 <material name="${color}"/>
             </visual>
+            <collision>
+                <xacro:insert_block name="collision_origin"/>
+                <geometry>
+                    <xacro:insert_block name="collision_size"/>
+                </geometry>
+            </collision>
         </link>
 
     </xacro:macro>

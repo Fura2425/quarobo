@@ -6,8 +6,11 @@
 #include "sensor_msgs/JointState.h"
 #include "std_msgs/Int32MultiArray.h"
 
+
+// prototype
 int value_map(float x, float in_min, float in_max, int out_min, int out_max);
 double value_truncation(double x, double y);
+
 
 std_msgs::Int32MultiArray joint_angle;
 

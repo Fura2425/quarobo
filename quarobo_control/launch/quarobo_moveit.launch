@@ -55,6 +55,6 @@
         <rosparam command="load" file="$(find quarobo_moveit)/config/ompl_planning.yaml"/>
     </node>
     <!-- Rviz -->
-    <arg name="rvizconfig" default="$(find quarobo_control)/config/quarobo.rviz"/>
+    <arg name="rvizconfig" default="$(find quarobo_control)/rviz/quarobo.rviz"/>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
 </launch>

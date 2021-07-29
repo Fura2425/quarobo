@@ -167,6 +167,7 @@ include_directories(
 #add_executable(moveit_commander src/moveit_commander.cpp)
 add_executable(jointStates_processing src/jointStates_processing.cpp)
 add_executable(moveit_commander src/moveit_commander.cpp)
+add_executable(fr_ik_node src/fr_ik.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -177,6 +178,7 @@ add_executable(moveit_commander src/moveit_commander.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(moveit_commander ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(fr_ik_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
@@ -185,6 +187,7 @@ add_dependencies(moveit_commander ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_E
 #target_link_libraries(moveit_commander ${catkin_LIBRARIES})
 target_link_libraries(jointStates_processing ${catkin_LIBRARIES})
 target_link_libraries(moveit_commander ${catkin_LIBRARIES})
+target_link_libraries(fr_ik_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##

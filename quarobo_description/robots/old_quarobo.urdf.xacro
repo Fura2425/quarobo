@@ -8,26 +8,34 @@
     <!-- === body === -->
     <xacro:leg_macro_fi prefix="body" parent="base_link" mesh="body.stl" color="pink">
         <origin xyz="0 0 0.16505" rpy="0 0 0"/>
+        <box size="0.07160 0.09810 0.02410"/>
     </xacro:leg_macro_fi>
 
     <!-- === Front right === -->
     <xacro:leg_macro_re prefix="FRS" parent="body_link" mesh="front_Shoulder_R.stl" color="green">
         <origin xyz="-0.027 -0.04905 -0.00075" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
+        <origin xyz="0 -0.010259 -0.002339" rpy="0 0 0"/>
+        <box size="0.032107 0.031304 0.01960"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_re prefix="FRL" parent="FRS_link" mesh="front_Leg_R.stl" color="blue">
         <origin xyz="0 -0.022304 -0.01230" rpy="1.57 0 0"/>
         <axis xyz="1 0 0"/>
+        <origin xyz="0 -0.02700 0" rpy="0 0 0"/>
+        <box size="0.02905 0.07160 0.01960"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_re prefix="FRF" parent="FRL_link" mesh="front_Foot_R.stl" color="purple">
         <origin xyz="-0.015546 -0.054 0" rpy="0 0 0"/>
         <axis xyz="1 0 0"/>
+        <origin xyz="-0.003069 -0.030498 0" rpy="0 0 0"/>
+        <box size="0.010 0.099465 0.010"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_fi prefix="FRT" parent="FRF_link" mesh="front_Toes_R.stl" color="orange">
         <origin xyz="-0.003 -0.088 0" rpy="0 0 0"/>
+        <box size="0.020 0.020 0.020"/>
     </xacro:leg_macro_fi>
 
 
@@ -35,20 +43,27 @@
     <xacro:leg_macro_re prefix="FLS" parent="body_link" mesh="front_Shoulder_L.stl" color="green">
         <origin xyz="0.027 -0.04905 -0.00075" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
+        <origin xyz="0 -0.010259 -0.002339" rpy="0 0 0"/>
+        <box size="0.032107 0.031304 0.01960"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_re prefix="FLL" parent="FLS_link" mesh="front_Leg_L.stl" color="blue">
         <origin xyz="0 -0.022304 -0.01230" rpy="1.57 0 0"/>
         <axis xyz="1 0 0"/>
+        <origin xyz="0 -0.02700 0" rpy="0 0 0"/>
+        <box size="0.02905 0.07160 0.01960"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_re prefix="FLF" parent="FLL_link" mesh="front_Foot_L.stl" color="purple">
         <origin xyz="0.015546 -0.054 0" rpy="0 0 0"/>
         <axis xyz="1 0 0"/>
+        <origin xyz="0.003069 -0.030498 0" rpy="0 0 0"/>
+        <box size="0.010 0.099465 0.010"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_fi prefix="FLT" parent="FLF_link" mesh="front_Toes_L.stl" color="orange">
         <origin xyz="0.003 -0.088 0" rpy="0 0 0"/>
+        <box size="0.020 0.020 0.020"/>
     </xacro:leg_macro_fi>
 
 
@@ -56,20 +71,27 @@
     <xacro:leg_macro_re prefix="RRS" parent="body_link" mesh="rear_Shoulder_R.stl" color="green">
         <origin xyz="-0.027 0.04905 -0.00075" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
+        <origin xyz="0 0.010259 -0.002339" rpy="0 0 0"/>
+        <box size="0.032107 0.031304 0.01960"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_re prefix="RRL" parent="RRS_link" mesh="rear_Leg_R.stl" color="blue">
         <origin xyz="0 0.022304 -0.01230" rpy="-1.57 0 0"/>
         <axis xyz="1 0 0"/>
+        <origin xyz="0 0.02700 0" rpy="0 0 0"/>
+        <box size="0.02905 0.07160 0.01960"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_re prefix="RRF" parent="RRL_link" mesh="rear_Foot_R.stl" color="purple">
         <origin xyz="-0.015546 0.054 0" rpy="0 0 0"/>
         <axis xyz="1 0 0"/>
+        <origin xyz="-0.003069 0.030498 0" rpy="0 0 0"/>
+        <box size="0.010 0.099465 0.010"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_fi prefix="RRT" parent="RRF_link" mesh="rear_Toes_R.stl" color="orange">
         <origin xyz="-0.003 0.088 0" rpy="0 0 0"/>
+        <box size="0.020 0.020 0.020"/>
     </xacro:leg_macro_fi>
 
 
@@ -77,20 +99,27 @@
     <xacro:leg_macro_re prefix="RLS" parent="body_link" mesh="rear_Shoulder_L.stl" color="green">
         <origin xyz="0.027 0.04905 -0.00075" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
+        <origin xyz="0 0.010259 -0.002339" rpy="0 0 0"/>
+        <box size="0.032107 0.031304 0.01960"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_re prefix="RLL" parent="RLS_link" mesh="rear_Leg_L.stl" color="blue">
         <origin xyz="0 0.022304 -0.01230" rpy="-1.57 0 0"/>
         <axis xyz="1 0 0"/>
+        <origin xyz="0 0.02700 0" rpy="0 0 0"/>
+        <box size="0.02905 0.07160 0.01960"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_re prefix="RLF" parent="RLL_link" mesh="rear_Foot_L.stl" color="purple">
         <origin xyz="0.015546 0.054 0" rpy="0 0 0"/>
         <axis xyz="1 0 0"/>
+        <origin xyz="0.003069 0.030498 0" rpy="0 0 0"/>
+        <box size="0.010 0.099465 0.010"/>
     </xacro:leg_macro_re>
 
     <xacro:leg_macro_fi prefix="RLT" parent="RLF_link" mesh="rear_Toes_L.stl" color="orange">
         <origin xyz="0.003 0.088 0" rpy="0 0 0"/>
+        <box size="0.020 0.020 0.020"/>
     </xacro:leg_macro_fi>
 
 </robot>
