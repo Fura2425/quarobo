@@ -146,7 +146,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-    # include
+    include
     ${catkin_INCLUDE_DIRS}
     )
 
@@ -154,6 +154,8 @@ include_directories(
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/quarobo_control.cpp
 # )
+add_library(kinematics include/kinematics.cpp)
+add_library(leg_parameter include/leg_parameter.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -165,9 +167,8 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/quarobo_control_node.cpp)
 #add_executable(moveit_commander src/moveit_commander.cpp)
+#add_executable(fr_ik_node src/fr_ik.cpp)
 add_executable(jointStates_processing src/jointStates_processing.cpp)
-add_executable(moveit_commander src/moveit_commander.cpp)
-add_executable(fr_ik_node src/fr_ik.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -177,17 +178,18 @@ add_executable(fr_ik_node src/fr_ik.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(moveit_commander ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(fr_ik_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#add_dependencies(moveit_commander ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#add_dependencies(fr_ik_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
 #target_link_libraries(moveit_commander ${catkin_LIBRARIES})
+#target_link_libraries(fr_ik_node ${catkin_LIBRARIES})
 target_link_libraries(jointStates_processing ${catkin_LIBRARIES})
-target_link_libraries(moveit_commander ${catkin_LIBRARIES})
-target_link_libraries(fr_ik_node ${catkin_LIBRARIES})
+target_link_libraries(kinematics ${catkin_LIBRARIES})
+target_link_libraries(leg_parameter ${catkin_LIBRARIES})
 
 #############
 ## Install ##
